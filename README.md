@@ -13,6 +13,7 @@
 | Container | Description | Repo |
 |-----------|-------------|------|
 | **ollama-intel** | Ollama with Intel iGPU acceleration via IPEX-LLM | [GitHub](https://github.com/Ava-AgentOne/ollama-intel) |
+| **ollama-dashboard** | Real-time monitoring dashboard for Ollama with benchmarking and 6 themes | [GitHub](https://github.com/Ava-AgentOne/ollama-dashboard) |
 
 ## 🚀 How to Install
 
