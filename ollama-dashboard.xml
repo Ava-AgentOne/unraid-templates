@@ -9,10 +9,10 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/Ava-AgentOne/ollama-dashboard</Support>
   <Project>https://github.com/Ava-AgentOne/ollama-dashboard</Project>
-  <Overview>Ollama monitoring dashboard with real-time model status, benchmarks, request history, and token tracking. 3 themes (Terminal/Cyberpunk/Ocean) with light/dark modes.</Overview>
+  <Overview>Ollama Intel iGPU Monitoring Dashboard — real-time model status, benchmarks, request history, update checker, API proxy with token tracking. 3 themes (Terminal/Cyberpunk/Ocean) with light/dark modes.</Overview>
   <Category>Tools:</Category>
   <WebUI>http://[IP]:[PORT:8088]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/unraid-templates/main/ollama-dashboard.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/ollama-dashboard/main/unraid-template.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Ava-AgentOne/ollama-dashboard/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
   <PostArgs/>
@@ -20,9 +20,10 @@
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="Dashboard Data" Target="/data" Default="/mnt/user/appdata/ollama-dashboard" Mode="rw" Description="Persistent storage for history and benchmarks" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/ollama-dashboard</Config>
+  <Config Name="Ollama URL" Target="OLLAMA_URL" Default="http://OLLAMA_IP:11434" Mode="" Description="Full URL to your Ollama instance (e.g. http://192.168.1.100:11434)" Type="Variable" Display="always" Required="true" Mask="false">http://OLLAMA_IP:11434</Config>
+  <Config Name="Ollama Container Name" Target="OLLAMA_CONTAINER" Default="ollama-intel" Mode="" Description="Name of your Ollama Docker container (for log reading)" Type="Variable" Display="always" Required="true" Mask="false">ollama-intel</Config>
+  <Config Name="Poll Interval (seconds)" Target="POLL_INTERVAL" Default="5" Mode="" Description="How often to poll Ollama for status (seconds)" Type="Variable" Display="always" Required="false" Mask="false">5</Config>
+  <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/ollama-dashboard" Mode="rw" Description="Persistent storage for history JSON" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/ollama-dashboard</Config>
   <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Docker socket for reading Ollama container logs (read-only)" Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
-  <Config Name="OLLAMA_URL" Target="OLLAMA_URL" Default="http://OLLAMA_IP:11434" Mode="" Description="Full URL to your Ollama instance (e.g. http://192.168.1.100:11434)" Type="Variable" Display="always" Required="true" Mask="false">http://OLLAMA_IP:11434</Config>
-  <Config Name="OLLAMA_CONTAINER" Target="OLLAMA_CONTAINER" Default="ollama-intel" Mode="" Description="Docker container name for log parsing" Type="Variable" Display="always" Required="true" Mask="false">ollama-intel</Config>
-  <Config Name="POLL_INTERVAL" Target="POLL_INTERVAL" Default="5" Mode="" Description="How often to poll Ollama for status (seconds)" Type="Variable" Display="always" Required="false" Mask="false">5</Config>
+  <Config Name="Proxy Port" Target="PROXY_PORT" Default="11434" Mode="" Description="Ollama API proxy port. Point clients here instead of Ollama directly for full token tracking." Type="Variable" Display="always" Required="false" Mask="false">11434</Config>
 </Container>
