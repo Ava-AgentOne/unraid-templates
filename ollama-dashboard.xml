@@ -26,4 +26,5 @@
   <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/ollama-dashboard" Mode="rw" Description="Persistent storage for history JSON" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/ollama-dashboard</Config>
   <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Docker socket for reading Ollama container logs (read-only)" Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
   <Config Name="Proxy Port" Target="PROXY_PORT" Default="11434" Mode="" Description="Ollama API proxy port. Point clients here instead of Ollama directly for full token tracking." Type="Variable" Display="always" Required="false" Mask="false">11434</Config>
+  <Config Name="Client Map" Target="CLIENT_MAP" Default="{}" Mode="" Description="JSON mapping of client IPs to names/icons. Example: {&quot;192.168.1.100&quot;:{&quot;name&quot;:&quot;My App&quot;,&quot;icon&quot;:&quot;🌐&quot;}}" Type="Variable" Display="always" Required="false" Mask="false">{}</Config>
 </Container>
