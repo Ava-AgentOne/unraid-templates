@@ -27,4 +27,6 @@
   <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Docker socket for reading Ollama container logs (read-only)" Type="Path" Display="advanced" Required="true" Mask="false">/var/run/docker.sock</Config>
   <Config Name="Proxy Port" Target="PROXY_PORT" Default="11434" Mode="" Description="Ollama API proxy port. Point clients here instead of Ollama directly for full token tracking." Type="Variable" Display="always" Required="false" Mask="false">11434</Config>
   <Config Name="Client Map" Target="CLIENT_MAP" Default="{}" Mode="" Description="JSON mapping of client IPs to names/icons. Example: {&quot;192.168.1.100&quot;:{&quot;name&quot;:&quot;My App&quot;,&quot;icon&quot;:&quot;🌐&quot;}}" Type="Variable" Display="always" Required="false" Mask="false">{}</Config>
+  <Config Name="Dashboard Password" Target="DASHBOARD_PASSWORD" Default="" Mode="" Description="Optional password to protect the dashboard. Leave empty to disable authentication." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Secret Key" Target="SECRET_KEY" Default="" Mode="" Description="Session encryption key. Leave empty to auto-generate (sessions reset on container restart)." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
 </Container>
