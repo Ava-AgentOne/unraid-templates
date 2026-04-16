@@ -15,6 +15,22 @@
   <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/ollama-dashboard/main/unraid-template.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Ava-AgentOne/ollama-dashboard/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
+  <Date>2026-04-16</Date>
+  <Changes>
+[b]v1.1 (2026-04-16)[/b]
+- OpenAI-compatible /v1/ endpoint tracking with token stats
+- Optional Nemo Guardrails integration (pre-check requests)
+- Opt-in prompt logging to prompts.jsonl
+- Error/warning display in dashboard rows
+- Proxy timeout configuration
+
+[b]v1.0 (2026-02-21)[/b]
+- Production ready release
+- Password protection and login page
+- API documentation and snapshot export
+- PWA support (installable app)
+- 3 themes with light/dark modes
+  </Changes>
   <PostArgs/>
   <CPUset/>
   <DonateText/>
