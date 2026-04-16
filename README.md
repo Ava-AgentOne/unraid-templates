@@ -10,10 +10,10 @@
 
 ## 📦 Available Containers
 
-| Container | Description | Repo |
-|-----------|-------------|------|
-| **ollama-intel** | Ollama with Intel iGPU acceleration via IPEX-LLM | [GitHub](https://github.com/Ava-AgentOne/ollama-intel) |
-| **ollama-dashboard** | Real-time monitoring dashboard for Ollama with benchmarking and 6 themes | [GitHub](https://github.com/Ava-AgentOne/ollama-dashboard) |
+| Container | Version | Description | Repo |
+|-----------|---------|-------------|------|
+| **ollama-intel** | v1.1 | Ollama with Intel iGPU acceleration via IPEX-LLM. Source-based build with weekly auto-updates. GPU device selection and parallel request control. | [GitHub](https://github.com/Ava-AgentOne/ollama-intel) |
+| **ollama-dashboard** | v1.1 | Real-time Ollama monitoring dashboard. Tracks Ollama native + OpenAI /v1/ APIs. Optional Nemo Guardrails, prompt logging, 6 themes. | [GitHub](https://github.com/Ava-AgentOne/ollama-dashboard) |
 
 ## 🚀 How to Install
 
