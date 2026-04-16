@@ -15,6 +15,21 @@
   <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/unraid-templates/main/ollama-intel.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Ava-AgentOne/ollama-intel/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped --shm-size=16g --memory=32g --device /dev/dri/card0:/dev/dri/card0 --device /dev/dri/renderD128:/dev/dri/renderD128</ExtraParams>
+  <Date>2026-04-16</Date>
+  <Changes>
+[b]v1.1 (2026-04-16)[/b]
+- Rebuilt from source (intel/oneapi-basekit + pip install ipex-llm)
+- Weekly auto-rebuilds pick up latest ipex-llm and Ollama updates
+- Intel XPU PyTorch wheels (no NVIDIA CUDA bloat)
+- Added ONEAPI_DEVICE_SELECTOR for multi-GPU targeting
+- Added OLLAMA_NUM_PARALLEL for parallel request control
+- Ollama version printed on container startup
+
+[b]v1.0 (2026-02-21)[/b]
+- Initial release with IPEX-LLM iGPU acceleration
+- SYCL backend for Intel Xe/Arc integrated graphics
+- Unraid template with br0 networking
+  </Changes>
   <PostArgs/>
   <CPUset/>
   <DonateText/>
