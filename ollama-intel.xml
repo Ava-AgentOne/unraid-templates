@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <n>ollama-intel</n>
+  <Name>ollama-intel</Name>
   <Repository>ghcr.io/ava-agentone/ollama-intel:latest</Repository>
   <Registry>https://github.com/Ava-AgentOne/ollama-intel/pkgs/container/ollama-intel</Registry>
   <Network>br0</Network>
@@ -9,14 +9,22 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/Ava-AgentOne/ollama-intel</Support>
   <Project>https://github.com/Ava-AgentOne/ollama-intel</Project>
-  <Overview>Ollama with Intel iGPU acceleration via IPEX-LLM (v1.1). Built from source using intel/oneapi-basekit — weekly auto-rebuilds pick up the latest ipex-llm and Ollama updates automatically. Runs LLM inference on Intel integrated graphics (Xe/Arc) using the SYCL backend. All model layers offloaded to GPU — no discrete GPU required. Supports Meteor Lake, Arrow Lake, and Intel Arc iGPUs. New: GPU device selection (ONEAPI_DEVICE_SELECTOR) and parallel request control (OLLAMA_NUM_PARALLEL).</Overview>
+  <Overview>Ollama with Intel iGPU acceleration via IPEX-LLM (v1.2). Built from source using intel/oneapi-basekit and rebuilt weekly to pick up the latest ipex-llm build. The bundled Ollama comes from IPEX-LLM and trails official Ollama releases (currently v0.9.x). Runs LLM inference on Intel integrated graphics (Xe/Arc) using the SYCL backend. All model layers offloaded to GPU — no discrete GPU required. Supports Meteor Lake, Arrow Lake, and Intel Arc iGPUs. Optional GPU device selection (ONEAPI_DEVICE_SELECTOR) and parallel request control (OLLAMA_NUM_PARALLEL).</Overview>
   <Category>AI: Tools:</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/unraid-templates/main/ollama-intel.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Ava-AgentOne/ollama-intel/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped --shm-size=16g --memory=32g --device /dev/dri/card0:/dev/dri/card0 --device /dev/dri/renderD128:/dev/dri/renderD128</ExtraParams>
-  <Date>2026-04-16</Date>
+  <Date>2026-07-05</Date>
   <Changes>
+[b]v1.2 (2026-07-05)[/b]
+- New TZ setting (default UTC, previously Asia/Shanghai)
+- Device selector and parallel requests moved to the advanced view
+- Empty optional settings no longer break GPU detection
+- Ollama runs as PID 1, so the container stops cleanly
+- Level Zero loader 1.31.0; oneAPI library paths found at startup
+- Note: the bundled Ollama comes from IPEX-LLM and trails official releases (currently v0.9.x)
+
 [b]v1.1 (2026-04-16)[/b]
 - Rebuilt from source (intel/oneapi-basekit + pip install ipex-llm)
 - Weekly auto-rebuilds pick up latest ipex-llm and Ollama updates
@@ -40,8 +48,9 @@
   <Config Name="OLLAMA_NUM_GPU" Target="OLLAMA_NUM_GPU" Default="999" Mode="" Description="Number of layers to offload to GPU (999 = all)" Type="Variable" Display="always" Required="true" Mask="false">999</Config>
   <Config Name="OLLAMA_DEBUG" Target="OLLAMA_DEBUG" Default="1" Mode="" Description="Enable verbose debug logging" Type="Variable" Display="always" Required="false" Mask="false">1</Config>
   <Config Name="OLLAMA_KEEP_ALIVE" Target="OLLAMA_KEEP_ALIVE" Default="30s" Mode="" Description="How long to keep models loaded after last request" Type="Variable" Display="always" Required="false" Mask="false">30s</Config>
-  <Config Name="ONEAPI_DEVICE_SELECTOR" Target="ONEAPI_DEVICE_SELECTOR" Default="" Mode="" Description="Target specific GPU device (e.g., level_zero:0 for iGPU, level_zero:1 for dGPU). Leave empty to use all available GPUs." Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="OLLAMA_NUM_PARALLEL" Target="OLLAMA_NUM_PARALLEL" Default="" Mode="" Description="Max parallel requests. Set to 1 for limited GPU memory. Leave empty for default." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="ONEAPI_DEVICE_SELECTOR" Target="ONEAPI_DEVICE_SELECTOR" Default="" Mode="" Description="Target a specific GPU (e.g. level_zero:0 for iGPU, level_zero:1 for dGPU; empty = all devices)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="OLLAMA_NUM_PARALLEL" Target="OLLAMA_NUM_PARALLEL" Default="" Mode="" Description="Max parallel requests (set to 1 for limited GPU memory; empty = Ollama default)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="TZ" Target="TZ" Default="UTC" Mode="" Description="Container timezone" Type="Variable" Display="advanced" Required="false" Mask="false">UTC</Config>
   <Config Name="ZES_ENABLE_SYSMAN" Target="ZES_ENABLE_SYSMAN" Default="1" Mode="" Description="Enable Intel GPU system management" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
   <Config Name="SYCL_CACHE_PERSISTENT" Target="SYCL_CACHE_PERSISTENT" Default="1" Mode="" Description="Cache compiled SYCL shaders for faster subsequent loads" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
   <Config Name="SYCL_PI_LEVEL_ZERO_USE_IMMEDIATE_COMMANDLISTS" Target="SYCL_PI_LEVEL_ZERO_USE_IMMEDIATE_COMMANDLISTS" Default="1" Mode="" Description="Use immediate command lists for better performance" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
