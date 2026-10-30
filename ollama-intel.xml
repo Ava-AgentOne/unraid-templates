@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <n>ollama-intel</n>
+  <Name>ollama-intel</Name>
   <Repository>ghcr.io/ava-agentone/ollama-intel:latest</Repository>
   <Registry>https://github.com/Ava-AgentOne/ollama-intel/pkgs/container/ollama-intel</Registry>
   <Network>br0</Network>

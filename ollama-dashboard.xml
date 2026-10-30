@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <n>ollama-dashboard</n>
+  <Name>ollama-dashboard</Name>
   <Repository>ghcr.io/ava-agentone/ollama-dashboard:latest</Repository>
   <Registry>https://github.com/Ava-AgentOne/ollama-dashboard/pkgs/container/ollama-dashboard</Registry>
   <Network>br0</Network>
