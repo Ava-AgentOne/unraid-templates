@@ -9,14 +9,19 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/Ava-AgentOne/ollama-intel</Support>
   <Project>https://github.com/Ava-AgentOne/ollama-intel</Project>
-  <Overview>Ollama with Intel iGPU acceleration via IPEX-LLM (v1.2). Built from source using intel/oneapi-basekit and rebuilt weekly to pick up the latest ipex-llm build. The bundled Ollama comes from IPEX-LLM and trails official Ollama releases (currently v0.9.x). Runs LLM inference on Intel integrated graphics (Xe/Arc) using the SYCL backend. All model layers offloaded to GPU — no discrete GPU required. Supports Meteor Lake, Arrow Lake, and Intel Arc iGPUs. Optional GPU device selection (ONEAPI_DEVICE_SELECTOR) and parallel request control (OLLAMA_NUM_PARALLEL).</Overview>
+  <Overview>Ollama with Intel iGPU acceleration via IPEX-LLM (v1.3). Built from source using intel/oneapi-basekit, with ipex-llm pinned to the last version Intel published, and split into layers so updates only download what changed. The bundled Ollama comes from IPEX-LLM and stays at v0.9.x; for the current official Ollama, try the experimental ollama-intel-vulkan template. Runs LLM inference on Intel integrated graphics (Xe/Arc) using the SYCL backend. All model layers offloaded to GPU — no discrete GPU required. Supports Meteor Lake, Arrow Lake, and Intel Arc iGPUs. Optional GPU device selection (ONEAPI_DEVICE_SELECTOR) and parallel request control (OLLAMA_NUM_PARALLEL).</Overview>
   <Category>AI: Tools:</Category>
   <WebUI/>
   <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/unraid-templates/main/ollama-intel.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Ava-AgentOne/ollama-intel/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped --shm-size=16g --memory=32g --device /dev/dri/card0:/dev/dri/card0 --device /dev/dri/renderD128:/dev/dri/renderD128</ExtraParams>
-  <Date>2026-07-05</Date>
+  <Date>2026-11-02</Date>
   <Changes>
+[b]v1.3 (2026-11-02)[/b]
+- Smaller updates: the image is split into layers, so later updates only download what changed (the first update downloads about 3.3 GB once)
+- ipex-llm pinned to 2.3.0b20251110, the last version Intel published, so every build is the same
+- New experimental Vulkan variant with current official Ollama (separate ollama-intel-vulkan template)
+
 [b]v1.2 (2026-07-05)[/b]
 - New TZ setting (default UTC, previously Asia/Shanghai)
 - Device selector and parallel requests moved to the advanced view
