@@ -14,7 +14,7 @@
 |-----------|---------|-------------|------|
 | **ollama-intel** | v1.3 | Ollama with Intel iGPU acceleration via IPEX-LLM (bundled Ollama v0.9.x). Pinned, layered build, so updates only download what changed. GPU device selection and parallel request control. | [GitHub](https://github.com/Ava-AgentOne/ollama-intel) |
 | **ollama-intel-vulkan** | v1.3 | *Experimental.* The current official Ollama on Intel iGPUs through Mesa's Vulkan driver. Rebuilt weekly to follow Ollama releases. | [GitHub](https://github.com/Ava-AgentOne/ollama-intel#-vulkan-variant-experimental) |
-| **ollama-dashboard** | v1.2.1 | Real-time Ollama monitoring dashboard. Tracks Ollama native + OpenAI /v1/ APIs. Optional Nemo Guardrails, prompt logging, 6 themes. | [GitHub](https://github.com/Ava-AgentOne/ollama-dashboard) |
+| **ollama-dashboard** | v1.2.2 | Real-time Ollama monitoring dashboard. Tracks Ollama native + OpenAI /v1/ APIs. Optional Nemo Guardrails, prompt logging, 6 themes. | [GitHub](https://github.com/Ava-AgentOne/ollama-dashboard) |
 
 ## 🚀 How to Install
 
