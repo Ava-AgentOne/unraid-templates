@@ -9,14 +9,20 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/Ava-AgentOne/ollama-dashboard</Support>
   <Project>https://github.com/Ava-AgentOne/ollama-dashboard</Project>
-  <Overview>Ollama Monitoring Dashboard (v1.2.1) — real-time model status, benchmarks, request history, API proxy with token tracking. Tracks Ollama native and OpenAI-compatible /v1/ endpoints. Optional Nemo Guardrails safety gate for prompt filtering. Opt-in prompt logging for request forensics. Password protection, snapshot export, 3 themes (Terminal/Cyberpunk/Ocean) with light/dark modes.</Overview>
+  <Overview>Ollama Monitoring Dashboard (v1.2.2) — real-time model status, benchmarks, request history, API proxy with token tracking. Tracks Ollama native and OpenAI-compatible /v1/ endpoints. Optional Nemo Guardrails safety gate for prompt filtering. Opt-in prompt logging for request forensics. Password protection, snapshot export, 3 themes (Terminal/Cyberpunk/Ocean) with light/dark modes.</Overview>
   <Category>Tools:</Category>
   <WebUI>http://[IP]:[PORT:8088]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/Ava-AgentOne/ollama-dashboard/main/unraid-template.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/Ava-AgentOne/ollama-dashboard/main/icon.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
-  <Date>2026-10-29</Date>
+  <Date>2026-11-02</Date>
   <Changes>
+[b]v1.2.2 (2026-11-02)[/b]
+- Security: other websites can no longer change settings or clear history through your browser (changes must be sent as JSON; login cookie is SameSite=Lax)
+- Prompts blocked by guardrails are now kept only when prompt logging is on
+- Warns in the log and settings when no Dashboard Password is set
+- Scripts calling the dashboard API must send POST bodies as JSON
+
 [b]v1.2.1 (2026-10-29)[/b]
 - Security: request data shown in the dashboard is now escaped (stored XSS via the proxy port)
 - Guardrails fail-closed now blocks NeMo refusals and replies without a verdict
@@ -58,7 +64,7 @@
   <Config Name="Proxy Port" Target="PROXY_PORT" Default="11434" Mode="" Description="Ollama API proxy port. Point clients here instead of Ollama directly for full token tracking." Type="Variable" Display="always" Required="false" Mask="false">11434</Config>
   <Config Name="Proxy Timeout" Target="PROXY_TIMEOUT" Default="600" Mode="" Description="Proxy upstream timeout to Ollama in seconds" Type="Variable" Display="advanced" Required="false" Mask="false">600</Config>
   <Config Name="Client Map" Target="CLIENT_MAP" Default="{}" Mode="" Description="JSON mapping of client IPs to names/icons. Example: {&quot;192.168.1.100&quot;:{&quot;name&quot;:&quot;My App&quot;,&quot;icon&quot;:&quot;🌐&quot;}}" Type="Variable" Display="always" Required="false" Mask="false">{}</Config>
-  <Config Name="Dashboard Password" Target="DASHBOARD_PASSWORD" Default="" Mode="" Description="Optional password to protect the dashboard. Leave empty to disable authentication." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Dashboard Password" Target="DASHBOARD_PASSWORD" Default="" Mode="" Description="Recommended. Without a password, anyone who can reach the dashboard can use it, change its settings and read logged prompts. Leave empty to turn the login off." Type="Variable" Display="always" Required="false" Mask="true"></Config>
   <Config Name="Secret Key" Target="SECRET_KEY" Default="" Mode="" Description="Session encryption key. Leave empty to auto-generate (sessions reset on container restart)." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
   <Config Name="Nemo Guardrails URL" Target="NEMO_GUARDRAILS_URL" Default="" Mode="" Description="Nemo Guardrails endpoint URL. Leave empty to disable. When set, every proxied request is checked before forwarding." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
 </Container>
